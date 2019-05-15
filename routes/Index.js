@@ -25,7 +25,29 @@ router.post('/get_meta', function(req, res)
 {
   var data = "please enter url firt";
   var option = {
-    fields: ["*"]
+    fields: [
+      "logo",
+      "description",
+      "title",
+      "keywords",
+      "subject",
+      "copyright",
+      "language",
+      "robots",
+      "revised",
+      "abstract",
+      "topic",
+      "summary",
+      "author",
+      "designer",
+      "reply-to",
+      "url",
+      "category",
+      "site_name",
+      "email",
+      "country-name",
+      "phone_numbe"
+    ]
   };
   if(bvalid.isObject(req.body) && bvalid.isString(req.body.url)){
     webget.getmeta(req.body.url,option,(data)=>{
