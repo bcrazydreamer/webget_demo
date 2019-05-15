@@ -4,6 +4,11 @@ const bodyParser            = require('body-parser');
 const webget                = require('webget');
 const bvalid                = require("bvalid");
 
+router.get('/', function(req, res)
+{   
+  res.send("server is working");
+});
+
 router.post('/get_html', function(req, res)
 {   
   var data = "please enter url firt";
