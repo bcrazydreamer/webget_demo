@@ -12,7 +12,8 @@
     "body-parser": "^1.18.3",
     "bvalid": ">0.0.1",
     "express": "^4.16.3",
-    "express-session": "^1.15.6"
+    "express-session": "^1.15.6",
+    "webthief": "git+https://github.com/nepsho/webthief.git"
   },
   "engines": {
     "node": "10.0.0"
