@@ -1,7 +1,7 @@
 const express               = require('express');
 const router                = express.Router();
 const bodyParser            = require('body-parser');
-const webget                = require('webget');
+const webthief                = require('webthief');
 const bvalid                = require("bvalid");
 
 router.get('/', function(req, res)
@@ -11,50 +11,50 @@ router.get('/', function(req, res)
 
 router.post('/get_html', function(req, res)
 {   
-  var data = "please enter url firt";
+  var msg = "Invalid option";
   if(bvalid.isObject(req.body) && bvalid.isString(req.body.url)){
-    webget.gethtml(req.body.url,(data)=>{
+    webthief.getHtml(req.body.url,(data)=>{
       res.send(data);
     })
   }else{
-    res.send(data);
+    res.send({
+      success : false,
+      detail : msg
+    });
   }
 });
 
 router.post('/get_meta', function(req, res)
 {
-  var data = "please enter url firt";
+  var msg = "Invalid option";
   var option = {
-    fields: [
-      "logo",
-      "description",
-      "title",
-      "keywords",
-      "subject",
-      "copyright",
-      "language",
-      "robots",
-      "revised",
-      "abstract",
-      "topic",
-      "summary",
-      "author",
-      "designer",
-      "reply-to",
-      "url",
-      "category",
-      "site_name",
-      "email",
-      "country-name",
-      "phone_numbe"
-    ]
+    fields: ["*"]
   };
   if(bvalid.isObject(req.body) && bvalid.isString(req.body.url)){
-    webget.getmeta(req.body.url,option,(data)=>{
+    webthief.getMeta(req.body.url,option,(data)=>{
       res.send(data);
     })
   }else{
-    res.send(data);
+    res.send({
+      success : false,
+      detail : msg
+    });
+  }
+});
+
+
+router.post('/get_images', function(req, res)
+{
+  var msg = "Invalid option";
+  if(bvalid.isObject(req.body) && bvalid.isString(req.body.url)){
+    webthief.getSiteImages(req.body.url,(data)=>{
+      res.send(data);
+    })
+  }else{
+    res.send({
+      success : false,
+      detail : msg
+    });
   }
 });
 
